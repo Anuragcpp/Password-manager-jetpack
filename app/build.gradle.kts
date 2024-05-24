@@ -1,6 +1,16 @@
+import org.jetbrains.kotlin.gradle.internal.Kapt3GradleSubplugin.Companion.isKaptVerbose
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+//    id("kotlin-kept")
+//    id("dagger.hilt.android.plugin")
+//    id ("com.google.dagger.hilt.android")
+
+    id ("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
+
+
 }
 
 android {
@@ -47,6 +57,7 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+
 }
 
 dependencies {
@@ -66,4 +77,38 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    //dependencies for kept and hilt
+//    implementation ("com.google.dagger:hilt-android:2.38.1")
+//    // dagger -hilt
+//    implementation ("com.google.dagger:hilt-android:2.46.1")
+//    kapt ("com.google.dagger:hilt-compiler:2.46.1")
+//    implementation ("androidx.activity:activity-ktx:1.7.2")
+
+    //compose dependencies
+    val lifecycle_version = "2.8.0"
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version")
+    implementation("androidx.navigation:navigation-compose:2.7.7")
+    implementation("androidx.hilt:hilt-navigation-compose:1.1.0-alpha01")
+    implementation("androidx.compose.material:material:1.6.7")
+
+    // dagger hilt dependencies
+//    implementation("com.google.dagger:hilt-android:2.44")
+//    kapt("com.google.dagger:hilt-android-compiler:2.44")
+    implementation("com.google.dagger:hilt-android:2.48")
+    kapt("com.google.dagger:hilt-android-compiler:2.48")
+
+
+    //room
+    val room_version = "2.6.1"
+
+    implementation("androidx.room:room-runtime:$room_version")
+    kapt("androidx.room:room-compiler:$room_version")
+    //  Kotlin Extensions and Coroutines support for Room
+    implementation("androidx.room:room-ktx:$room_version")
+
 }
+
+//kapt {
+//    correctErrorTypes = true
+//}
