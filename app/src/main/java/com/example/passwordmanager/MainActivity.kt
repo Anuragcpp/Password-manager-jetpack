@@ -42,7 +42,9 @@ class MainActivity : ComponentActivity() {
                             }
                         )
                     ){
-                        AddEditPasswordScreen()
+                        AddEditPasswordScreen(
+                            navController = navController
+                        )
                     }
                 }
             }
